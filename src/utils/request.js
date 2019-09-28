@@ -2,24 +2,40 @@
  * @Author: Chris
  * @Date: 2019-09-25 17:20:04
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-25 19:11:28
+ * @LastEditTime: 2019-09-26 10:45:05
  * @Descripttion: **
  */
 import axios from 'axios';
-import util from './utils/util.js';
+import router from 'vue-router';
+import util from './util.js';
 // 环境的切换
 if (process.env.NODE_ENV === 'development') {
-  axios.defaults.baseURL = '/api';
+  axios.defaults.baseURL = 'http://120.79.9.183:60004';
 } else if (process.env.NODE_ENV === 'debug') {
   axios.defaults.baseURL = '';
 } else if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = 'http://api.123dailu.com/';
+  axios.defaults.baseURL = '';
 }
 
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;';
 const version = '1.0.0';
-const timestamp = Date.parse(new Date()) / 1000;
+// const timestamp = Date.parse(new Date()) / 1000;
+const toLogin = () => {
+  router.replace({
+    path: '/login',
+    query: {
+      redirect: router.currentRoute.fullPath
+    }
+  });
+}
+// const tip = msg => {
+//   Toast({
+//     message: msg,
+//     duration: 1000,
+//     forbidClick: true
+//   });
+// }
 
 /**
  * @name: Chris
@@ -32,9 +48,9 @@ axios.interceptors.request.use(
   config => {
     // const token = getCookie('名称');注意使用的时候需要引入cookie方法，推荐js-cookie
     // config.data = JSON.stringify(config.data);
-    config.headers = {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
+    // config.headers = {
+    //   'Content-Type': 'application/x-www-form-urlencoded'
+    // }
     const token = ''
     token && (config.headers.Authorization = token);
     return config;
@@ -57,11 +73,11 @@ axios.interceptors.response.use(
     //     querry: { redirect: router.currentRoute.fullPath }//从哪个页面跳转
     //   })
     // }
+    // toLogin()
+    console.log(response)
     return response;
   },
-  error => {
-    return Promise.reject(error)
-  }
+  error => Promise.reject(error)
 )
 
 export default {
@@ -86,16 +102,10 @@ export default {
     //   forbidClick: true,
     //   mask: false
     // });
-    param.userId = sessionStorage.getItem('userId');
-    param = JSON.stringify(param);
-    var data = {
-      bizContent: param,
-      sign: util.makeSign(param, timestamp, version),
-      timestamp: timestamp,
-      version: version
-    };
+    // param.userId = sessionStorage.getItem('userId');
+    // param = JSON.stringify(param);
     return new Promise((resolve, reject) => {
-      axios.post(url, data)
+      axios.post(url, param)
         .then(response => {
           // Toast.clear();
           resolve(response.data);
