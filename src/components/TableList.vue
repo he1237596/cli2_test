@@ -2,19 +2,21 @@
  * @Author: Chris
  * @Date: 2019-09-27 15:38:48
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-28 09:58:58
+ * @LastEditTime: 2019-09-29 09:21:25
  * @Descripttion: **
  -->
+ <!--
+/**
+ * @name: Chris
+ * @Descripttion: 此处可以有封装，暂时搁置
+ */  -->
 <template>
   <div class="table-wrap">
     <el-table :data="tableData" style="width: 100%;width: 100%">
-      <!-- <el-table-column v-for="(item ,index) in columns" :key="index" v-bind="item">
-        <template v-if="item.render" slot-scope="scope">
-          <el-button
-            @click.native.prevent="deleteRow(scope.$index, tableData)"
-            type="text"
-            size="small"
-          >移除</el-button>
+      <!-- <el-table-column v-for="(item, index) in columns" :key="index" v-bind="item">
+        <template slot-scope="scope">
+          {{ scope.row[item.prop]}}
+
         </template>
       </el-table-column> -->
       <el-table-column fixed prop="date" label="日期" width="150"></el-table-column>

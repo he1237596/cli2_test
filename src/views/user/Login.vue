@@ -2,30 +2,33 @@
  * @Author: Chris
  * @Date: 2019-09-25 10:12:06
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-26 11:06:15
+ * @LastEditTime: 2019-09-29 15:21:28
  * @Descripttion: **
  -->
 <template>
   <div class="main">
-    <el-form
-      :model="ruleForm"
-      status-icon
-      :rules="rules"
-      ref="ruleForm"
-      label-width="100px"
-      class="demo-ruleForm"
-    >
-      <el-form-item label="密码" prop="userName">
-        <el-input v-model="ruleForm.userName" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="确认密码" prop="password">
-        <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
-      </el-form-item>
-    </el-form>
+    <h1>云智控后台管理系统</h1>
+    <div class="form-wrap">
+      <el-form
+        :model="ruleForm"
+        status-icon
+        :rules="rules"
+        ref="ruleForm"
+        label-width="100px"
+        class="demo-ruleForm"
+      >
+        <el-form-item label="密码" prop="userName">
+          <el-input v-model="ruleForm.userName" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="确认密码" prop="password">
+          <el-input type="password" v-model="ruleForm.password" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+          <!-- <el-button @click="resetForm('ruleForm')">重置</el-button> -->
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
 <script>
@@ -70,7 +73,13 @@ export default {
           console.log(this.ruleForm);
           const { userName, password } = this.ruleForm;
           this.$api.user.login({ userName, password }).then(res => {
-            console.log(res);
+            const { data, code } = res;
+            if(code === 200){
+              sessionStorage.setItem('userInfo',JSON.stringify(data))
+              this.$router.push('/enterpriseManage');
+            }else{
+              
+            }
           });
         } else {
           console.log("error submit!!");
@@ -85,10 +94,23 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.main{
-  width: 500px;
-  height: 560px;
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  // width: 500px;
+  // height: 560px;
+  .wh(100%, 100vh);
   background: #fff;
   border-radius: 8px;
+  h1{
+    font-size: 28px;
+    padding-bottom: 96px;
+  }
+  .form-wrap{
+    
+  }
 }
 </style>
