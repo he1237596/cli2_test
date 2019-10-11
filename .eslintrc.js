@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date: 2019-09-25 02:22:29
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-25 17:37:17
+ * @LastEditTime: 2019-09-29 21:18:13
  * @Descripttion: **
  */
 // https://eslint.org/docs/user-guide/configuring
@@ -32,6 +32,7 @@ module.exports = {
     'generator-star-spacing': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-tabs': 'off',
     // 'semi': ["error", "always"]
     'semi': 0// 分号可写可不写
   }

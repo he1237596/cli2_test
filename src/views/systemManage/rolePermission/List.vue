@@ -8,7 +8,7 @@
 <template>
   <div class="main">
     <div class="main-left">
-    <Toolbar title="角色" />
+      <Toolbar title="角色" />
     </div>
     <div class="main-right">
       <Toolbar title="权限" />
@@ -17,17 +17,17 @@
 </template>
 <script>
 export default {
-  name: 'rolePermission'
-}
+  name: "rolePermission"
+};
 </script>
 <style lang="less" scoped>
-  .main{
-    display: flex;
-    .main-left{
-      width: 280px;
-    }
-    .main-right{
-      flex: 1;
-    }
+.main {
+  display: flex;
+  .main-left {
+    width: 280px;
   }
+  .main-right {
+    flex: 1;
+  }
+}
 </style>

@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date: 2019-09-27 15:38:48
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-29 09:21:25
+ * @LastEditTime: 2019-10-06 05:33:00
  * @Descripttion: **
  -->
  <!--
@@ -12,7 +12,7 @@
  */  -->
 <template>
   <div class="table-wrap">
-    <el-table :data="tableData" style="width: 100%;width: 100%">
+    <el-table :data="tableData" style="width: 100%" height="100%">
       <!-- <el-table-column v-for="(item, index) in columns" :key="index" v-bind="item">
         <template slot-scope="scope">
           {{ scope.row[item.prop]}}

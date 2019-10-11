@@ -21,6 +21,10 @@
 </template>
 <script>
 import TableList from "@/components/TableList";
+const cellSole = {
+  
+}
+
 export default {
   components: {
     TableList

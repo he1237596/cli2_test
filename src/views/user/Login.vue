@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date: 2019-09-25 10:12:06
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-29 15:21:28
+ * @LastEditTime: 2019-10-06 17:14:50
  * @Descripttion: **
  -->
 <template>
@@ -32,8 +32,12 @@
   </div>
 </template>
 <script>
+import { mapMutations } from "vuex";
 export default {
   name: "Login",
+  created() {
+    console.log(this.$route);
+  },
   data() {
     const validateUserName = (rule, value, callback) => {
       if (value === "") {
@@ -68,17 +72,27 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate(valid => {
+      this.$refs[formName].validate(async valid => {
         if (valid) {
           console.log(this.ruleForm);
           const { userName, password } = this.ruleForm;
           this.$api.user.login({ userName, password }).then(res => {
-            const { data, code } = res;
-            if(code === 200){
-              sessionStorage.setItem('userInfo',JSON.stringify(data))
-              this.$router.push('/enterpriseManage');
-            }else{
-              
+            const { data, code, msg } = res;
+            if (code === 200) {
+              sessionStorage.setItem("userInfo", JSON.stringify(data));
+              this.LOGIN(data);
+              const { query } = this.$route;
+              if (query.redirect) {
+                this.$router.push(query.redirect);
+              } else {
+                this.$router.push("/");
+              }
+            } else {
+              // this.$message({
+              //   message: msg,
+              //   type: "error"
+              // });
+              this.$message.error(msg);
             }
           });
         } else {
@@ -89,7 +103,8 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
-    }
+    },
+    ...mapMutations(["LOGIN"])
   }
 };
 </script>
@@ -105,12 +120,11 @@ export default {
   .wh(100%, 100vh);
   background: #fff;
   border-radius: 8px;
-  h1{
+  h1 {
     font-size: 28px;
     padding-bottom: 96px;
   }
-  .form-wrap{
-    
+  .form-wrap {
   }
 }
 </style>

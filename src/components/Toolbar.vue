@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date: 2019-09-26 17:37:34
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-28 12:09:40
+ * @LastEditTime: 2019-10-06 06:15:14
  * @Descripttion: **
  -->
 <template>
@@ -49,8 +49,17 @@ export default {
 </script>
 <style lang="less" scoped>
 .toolbar {
+  width: 100%;
+  padding: 0 20px;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    box-sizing: border-box;
   .btn-wrap {
-    float: right;
+    // float: right;
     .btn {
       padding: 3px 0;
     }
