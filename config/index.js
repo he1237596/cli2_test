@@ -3,7 +3,7 @@
  * @Author: Chris
  * @Date: 2019-09-25 02:22:29
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-25 17:45:26
+ * @LastEditTime: 2019-10-18 17:59:41
  */
 'use strict'
 // Template version: 1.3.1
@@ -59,7 +59,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

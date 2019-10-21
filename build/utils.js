@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date: 2019-09-25 02:22:29
  * @LastEditors: Chris
- * @LastEditTime: 2019-09-25 16:47:46
+ * @LastEditTime: 2019-10-18 19:13:54
  * @Descripttion: **
  */
 'use strict'
@@ -54,7 +54,9 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
-        fallback: 'vue-style-loader'
+        fallback: 'vue-style-loader',
+        //此处加一句
+        publicPath:'../../'
       })
     } else {
       return ['vue-style-loader'].concat(loaders)

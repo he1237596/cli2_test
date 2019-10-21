@@ -2,7 +2,7 @@
  * @Author: Chris
  * @Date: 2019-09-25 17:20:04
  * @LastEditors: Chris
- * @LastEditTime: 2019-10-06 17:23:52
+ * @LastEditTime: 2019-10-18 19:28:19
  * @Descripttion: **
  */
 import axios from 'axios';
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 } else if (process.env.NODE_ENV === 'debug') {
   axios.defaults.baseURL = '';
 } else if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = '';
+  axios.defaults.baseURL = 'http://120.79.9.183:60004';
 }
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/json;';

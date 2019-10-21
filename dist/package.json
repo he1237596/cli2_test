@@ -1,0 +1,48 @@
+{
+  "name": "dist",
+  "productName": "dist",
+  "author": "Chris",
+  "version": "1.0.4",
+  "main": "main.js",
+  "description": "项目描述",
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "electron_dev": "electron main.js",
+    "electron_build": "electron-packager . app --platform=win32 --arch=x64  --out=./out --asar --app-version=0.0.1"
+  },
+  "build": {
+    "electronVersion": "1.8.4",
+    "win": {
+      "requestedExecutionLevel": "highestAvailable",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "appId": "dist",
+    "artifactName": "dist-${version}-${arch}.${ext}",
+    "nsis": {
+      "artifactName": "dist-${version}-${arch}.${ext}"
+    },
+    "extraResources": [
+      {
+        "from": "./static/*",
+        "to": "app-server"
+      }
+    ]
+  },
+  "dependencies": {
+    "core-js": "^2.4.1",
+    "electron-updater": "^2.22.1"
+  },
+  "devDependencies": {
+    "electron": "^6.0.12",
+    "electron-packager": "^12.2.0"
+  }
+}
