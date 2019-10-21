@@ -10,7 +10,7 @@
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
     "electron_dev": "electron main.js",
-    "electron_build": "electron-packager . app --platform=win32 --arch=x64  --out=./out --asar --app-version=0.0.1"
+    "electron_build": "electron-packager . app --platform=win32 --arch=x64 --overwrite --out=./out --asar --app-version=0.0.1"
   },
   "build": {
     "electronVersion": "1.8.4",
